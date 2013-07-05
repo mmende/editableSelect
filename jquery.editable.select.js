@@ -2,7 +2,7 @@
 * @description This plugin allows you to make a select box editable like a text box while keeping it's select-option features
 * @description no stylesheets or images are required to run the plugin
 *
-* @version 0.1
+* @version 0.0.1
 * @author Martin Mende
 * @license Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 * @license For comercial use please contact me: martin.mende(at)aristech.de
