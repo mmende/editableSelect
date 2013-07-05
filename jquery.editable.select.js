@@ -33,12 +33,17 @@
 	        	wrapper.css({display: "inline-block"});
 	        	//place an input which will represent the editable select
 	        	var inputSelect = $("<input/>").insertBefore(originalSelect);
+	        		//get and remove the original id
 	        		var objID = originalSelect.attr("id");
 	        		originalSelect.removeAttr("id");
+	        	//add the attributes from the original select
 	        	inputSelect.attr({
 	        		alt: originalSelect.attr("alt"),
 	        		title: originalSelect.attr("title"),
 	        		class: originalSelect.attr("class"),
+	        		name: originalSelect.attr("name"),
+	        		disabled: originalSelect.attr("disabled"),
+	        		tabindex: originalSelect.attr("tabindex"),
 	        		id: objID
 	        	});
 	        	//get the editable css properties from the select
