@@ -2,7 +2,7 @@
 * @description This plugin allows you to make a select box editable like a text box while keeping it's select-option features
 * @description no stylesheets or images are required to run the plugin
 *
-* @version 0.0.1
+* @version 0.1
 * @author Martin Mende
 * @license Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
 * @license For comercial use please contact me: martin.mende(at)aristech.de
@@ -21,7 +21,7 @@
 (function ( $ ) {
  
     $.fn.editableSelect = function() {
-      var instanceVar;
+    	var instanceVar;
     	
     	this.each(function(){
 	        var originalSelect = $(this);
@@ -33,6 +33,14 @@
 	        	wrapper.css({display: "inline-block"});
 	        	//place an input which will represent the editable select
 	        	var inputSelect = $("<input/>").insertBefore(originalSelect);
+	        		var objID = originalSelect.attr("id");
+	        		originalSelect.removeAttr("id");
+	        	inputSelect.attr({
+	        		alt: originalSelect.attr("alt"),
+	        		title: originalSelect.attr("title"),
+	        		class: originalSelect.attr("class"),
+	        		id: objID
+	        	});
 	        	//get the editable css properties from the select
 	        	var rightPadding = 15;
 	        	inputSelect.css({
@@ -66,7 +74,7 @@
 	        		border: "solid 1px #ccc",
 	        		fontFamily: inputSelect.css("fontFamily"),
 	        		fontSize: inputSelect.css("fontSize"),
-	        		backgroundColor: "#fff",
+	        		background: "#fff",
 	        		position: "absolute",
 	        		zIndex: 1000000
 	        	}).insertAfter(triangle);
@@ -130,9 +138,11 @@
 		*/
         instanceVar.restoreSelect = function(){
         	var originalSelect = instanceVar.parent().children("select");
+        	var objID = instanceVar.attr("id");
         	instanceVar.parent().before(originalSelect);
         	instanceVar.parent().remove();
         	originalSelect.css({visibility: "visible", display: "inline-block"});
+        	originalSelect.attr({id: objID});
         };
         
         //return the instance
@@ -146,6 +156,7 @@
     	var inputSelect = wrapper.children("input");
     	selectOption.css({
    			padding: "3px",
+   			textAlign: "left",
    			cursor: "pointer"	
    		}).hover(
    		function(){
